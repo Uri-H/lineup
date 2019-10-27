@@ -1,0 +1,23 @@
+//lineup randomizer for my 10 person softball team
+//first attempt at using javascript
+
+function myFunction() {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var dataRange = sheet.getRange(1, 1, 11, 1);
+  var players = dataRange.getValues()
+  var lineup = ['','','','','','','','','','',''];
+
+  var max=11;
+  var random = Math.floor(Math.random()*max);
+  
+  var i;
+  for(i=0;i<11;i++){
+  lineup[i]=players[random];
+  players.splice(random, 1);
+  max=max-1;
+  random= Math.floor(Math.random()*max);
+  }
+    var range = sheet.getRange("B1:B11");
+  range.setValues(lineup);
+  
+}
